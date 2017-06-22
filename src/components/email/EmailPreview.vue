@@ -1,5 +1,5 @@
 <template>
-<li :class="{selected : email.isSelected}">{{email.subject}}</li>
+<li :class="{selected : email.isRead,}">{{email.subject}}</li>
 </template>
 
 <script>
@@ -9,7 +9,8 @@ export default {
   data () {
     return {
     }
-  }
+  },
+
 }
 </script>
 

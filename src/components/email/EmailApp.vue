@@ -46,9 +46,14 @@
 
       
        ],
-      selectedEmail: {subject: "Kill bill", body: "DQWDQWDQWDQWDQWDQWDWQDDQWDWQDQWDQWD", isRead: false}
+      selectedEmail: null,
     }
-  }
+    
+  },
+  created(){
+      this.selectedEmail= this.emails[0];
+      this.emails[0].isRead = true;
+    }
 }
 </script>
 

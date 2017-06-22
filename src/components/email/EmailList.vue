@@ -1,9 +1,10 @@
 <template>
     <div>
         <ul>
-            <div><email-preview v-for="email in emails" 
+            <email-preview v-for="email in emails" 
             :email="email"
-            @click.native="selectEmail(email)" /></div>
+            @click.native="selectEmail(email)"
+            :class="{ stam: stamkaha }" />
         </ul>
     </div>
 </template>
@@ -15,29 +16,32 @@ export default {
     components: { EmailPreview },
     name: 'email-list',
     props: ['emails', 'selectedEmail'],
-    // data() {
-    //     return {
-    //         emails: emails;
-    //     }
-    // }
-    computed :{
-      isEmailSelected(email){
-        return email.isSelected;
-      }
+    data() {
+        return {
+            stamkaha: true
+        }
     },
     methods: {
         selectEmail(email){
-            email.isSelected = true;
+            email.isRead = true;
             // el.classList.add('selected');
             eventBus.$emit('anotherEmailSelcted', email);
             // debugger;
         }
+    },
+    computed :{
+        // isSelected(){
+        //     return ()? : ;
+        // }
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .stam{
+        color:blue;
+    }
     .selected{
         background-color: whitesmoke;
     }
@@ -47,5 +51,8 @@ export default {
         padding-right: 40px;
         /*justify-content: space-between;*/
         justify-content: center;
+    }
+    li{
+        cursor: pointer;
     }
 </style>
