@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-
 import BookList from '@/components/books/BookList'
 import Cart from '@/components/books/Cart'
 
@@ -32,7 +31,7 @@ export default new Router({
     },
     {
       path: '/email',
-      name: 'EmailApp',
+      name: 'email',
       component: EmailApp
 
     }

@@ -1,5 +1,3 @@
-// Client Side State of the store
-// Kind of caching...
 var books = [];
 
 function getBooks() {
@@ -45,7 +43,12 @@ function getNext(book) {
 
 function saveBook(book) {
   var idx = books.findIndex(currBook => currBook.id === book.id)
-  books.splice(idx, 1, book);
+  if(idx > -1){
+    books.splice(idx, 1, book);
+  }
+  else{
+    books.push(book);
+  }
 }
 
 export default {
@@ -57,38 +60,9 @@ export default {
 
 function generateBooks() {
   return [
-              {id: 1, name: `The Little Prince`, desc: `bla bla`,  price: 200, author: 'Antoine de Saint Exupéry', imgUrl: './assets/img/theLittlePrince.jpg'},
-              {id: 2, name: 'War and Peace', desc: `bla bla`,  price: 100, author: 'Leo Tolstoy', imgUrl: './assets/img/war_and_peace.jpg'},
-              {id: 3, name: 'Harry Potter', desc: `bla bla`,  price: 150, author: 'J. K. Rowling', imgUrl: './assets/img/harryPotter.jpg'},
-              {id: 4, name: 'Lolita', desc: `bla bla`,  price: 120, author: 'Nabokov', imgUrl: './assets/img/Lolita.jpg'}
+              {id: 1, name: `The Little Prince`, desc: `bla bla`,  price: 200, author: 'Antoine de Saint Exupéry', imgUrl: 'http://www.lookingglassreview.com/assets/images/The_Little_Prince.jpg'},
+              {id: 2, name: 'War and Peace', desc: `bla bla`,  price: 100, author: 'Leo Tolstoy', imgUrl: 'http://fivebooks.com//app/uploads/2012/04/1400079985.01.LZ_1.jpg'},
+              {id: 3, name: 'Harry Potter', desc: `bla bla`,  price: 150, author: 'J. K. Rowling', imgUrl: 'http://img.yumpu.com/55880836/1/358x471/07-harry-potter-y-las-reliquias-de-la-muerte.jpg?quality=80'},
+              {id: 4, name: 'Lolita', desc: `bla bla`,  price: 120, author: 'Nabokov', imgUrl: 'https://vdarcangelo.files.wordpress.com/2011/07/lolita-book-cover.jpg?w=187&h=300'}
          ];
 }
-
-// Used to create local data with no AJAX
-// function generateBooks() {
-//   const skills = ['JavaScript', 'CSS', 'SASS', 'Node', 'Angular 2', 'VUE'];
-//   return skills.map(generateBook);
-// }
-
-// function generateBook(skill, i) {
-//   return {
-//     id: i + 1,
-//     title: `Mastering ${skill}`,
-//     description: `${skill} lorem  ipsum dkhd daklhd dakhdk dakhdk da`,
-//     price: (i + 1) * 10
-//   }
-// }
-
-// function getProductsFromGenericAPI() {
-//   const params = {
-//     rows:       10,
-//     id:        '{index}',
-//     price:     '{number|1000}',
-//     title: '{lorem|2}',
-//     description: '{lorem|10}',
-//     pretty: true
-//   }
-
-//   return $.getJSON('http://www.filltext.com', params);
-
-// }

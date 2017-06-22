@@ -3,7 +3,7 @@
        <h1>Cart</h1>
        <ul>
            <li v-for="item in items">
-               {{item.title}} (Quantity: {{item.quantity}})
+               {{item.name}} (Quantity: {{item.quantity}})
                <p>TAG: {{item.tag}}</p>
            </li>
        </ul>

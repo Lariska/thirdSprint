@@ -25,12 +25,21 @@
     </p>
   </div>
   <div class="inner-links flex justify-center align-center">
-      <div style="padding: 14px;">
-        <span class="title">Appsus</span>
-      </div>
-      <img src="../assets/logo.png" class="image">
-      <img src="../assets/logo.png" class="image">
-      <img src="../assets/logo.png" class="image">
+    <el-row>
+      <el-col>
+        <el-card class="card" :body-style="{ padding: '0px' }">
+          <div style="padding: 14px;">
+            <span class="title">Appsus</span>
+          </div>
+          <img src="../assets/maps.png" class="image">
+          <img src="../assets/Email.png" class="image" @click="email">
+          <img src="../assets/Book.png" class="image" @click="book">
+        </el-card>
+      </el-col>
+  </el-row>
+
+
+
   </div>
 
 <footer class="main-footer flex justify-center align-center clean-list">
@@ -46,6 +55,14 @@ export default {
   data () {
     return {
       msg: 'Welcome to Appsus'
+    }
+  },
+  methods: {
+    book(){
+      this.$router.push({name: 'book-list'});
+    },
+    email(){
+      this.$router.push({name: 'email'});
     }
   }
 }
@@ -68,10 +85,6 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-
-a {
-  color: #42b983;
-}
 .active{
   font-family: Lato;
   font-size:1.90rem;
@@ -93,5 +106,10 @@ a {
 img{
   margin: 50px;
 }
-
+.card{
+  background-color: lightblue;
+}
+.clean-list{
+  margin: 0;
+}
 </style>

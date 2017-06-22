@@ -39,24 +39,20 @@ export default {
             selectedBook: null,
             editedBook: null,
             isCreateMode: false,
-            bookFilter: null
-            
+            bookFilter: null   
         }
     },
 
     created() {
         bookService.getBooks().then(books => {
-            // console.log(books);
             this.books = books
-            // books has become REACTIVE!
-            // console.log(this.books);
         })
     },
     computed: {
         booksToShow() {
             if (!this.bookFilter) return this.books;
             return this.books.filter(book => {
-                return book.title.includes(this.bookFilter.byText)
+                return book.name.includes(this.bookFilter.byText)
             });
         }
     },
@@ -71,11 +67,12 @@ export default {
             this.selectedBook = bookService.getNext(this.selectedBook);
         },
         editBook(book) {
-            console.log('Editing the book', book)
             this.editedBook = book;
         },
         deleteBook(book) {
-            bookService.deleteBook(book);
+            this.editedBook = null;
+            this.isCreateMode = false;
+            // bookService.deleteBook(book);
         },
         saveBook(book) {
             bookService.saveBook(book);

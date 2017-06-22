@@ -2,10 +2,10 @@
 <template>
     <section class="popup book-edit">
 
-        <h1 v-if="book">Edit: {{book.title}}</h1>
+        <h1 v-if="book">Edit: {{book.name}}</h1>
         <h1 v-else>New Book</h1>
 
-        <input type="text" v-model="bookToEdit.title" />
+        <input type="text" v-model="bookToEdit.name" />
         <button @click="save">Save</button>
         <button @click="cancel">Cancel</button>
     </section>
