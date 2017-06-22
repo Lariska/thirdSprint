@@ -5,14 +5,14 @@ import Hello from '@/components/Hello'
 import BookList from '@/components/books/BookList'
 import Cart from '@/components/books/Cart'
 
-import Email from '@/components/email/Email'
+import EmailApp from '@/components/email/EmailApp'
 
 
 Vue.use(Router)
 
 export default new Router({
   components:{
-    Email
+    EmailApp
   },
   routes: [
     {
@@ -32,8 +32,8 @@ export default new Router({
     },
     {
       path: '/email',
-      name: 'Email',
-      component: Email
+      name: 'EmailApp',
+      component: EmailApp
 
     }
   ]
