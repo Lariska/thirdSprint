@@ -31,7 +31,7 @@
           <div style="padding: 14px;">
             <span class="title">Appsus</span>
           </div>
-          <img src="../assets/maps.png" class="image">
+          <img src="../assets/maps.png" class="image" @click="places">
           <img src="../assets/Email.png" class="image" @click="email">
           <img src="../assets/Book.png" class="image" @click="book">
         </el-card>
@@ -63,6 +63,9 @@ export default {
     },
     email(){
       this.$router.push({name: 'email'});
+    },
+    places(){
+      this.$router.push({name: 'place'});
     }
   }
 }
