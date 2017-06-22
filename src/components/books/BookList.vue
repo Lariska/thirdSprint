@@ -7,7 +7,8 @@
             <book-preview v-for="currBook in booksToShow" :key="currBook.id"
              @click.native="selectBook(currBook)" @edit="editBook(currBook)" 
              @delete="deleteBook(currBook)" 
-             @add-to-cart="addToCart(currBook)" :book="currBook">
+             @add-to-cart="addToCart(currBook)" 
+             :book="currBook">
             </book-preview>
         </ul>
         <BookDetails v-if="selectedBook" @close="resetSelected" @next="selectNext" :book="selectedBook">
