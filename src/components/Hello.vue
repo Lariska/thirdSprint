@@ -25,18 +25,12 @@
     </p>
   </div>
   <div class="inner-links flex justify-center align-center">
-<el-row>
-  <el-col>
-    <el-card :body-style="{ padding: '0px' }">
       <div style="padding: 14px;">
         <span class="title">Appsus</span>
       </div>
       <img src="../assets/logo.png" class="image">
       <img src="../assets/logo.png" class="image">
       <img src="../assets/logo.png" class="image">
-    </el-card>
-  </el-col>
-</el-row>
   </div>
 
 <footer class="main-footer flex justify-center align-center clean-list">
