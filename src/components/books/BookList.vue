@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import bookService from '../book.service.js';
-import cartService from '../cart.service.js';
+import bookService from '../../services/book.service.js';
+import cartService from '../../services/cart.service.js';
 import BookEdit from './BookEdit';
 import BookDetails from './BookDetails';
 import BookPreview from './BookPreview';

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import cartService from '../cart.service.js'
+    import cartService from '../../services/cart.service.js'
     export default {
     name: 'cart',
     data() {

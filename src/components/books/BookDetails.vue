@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    name:'book-details', 
+    name:'book-details',
         props: ['book'],
         methods: {
             closeMe() {
