@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
+
 import BookList from '@/components/books/BookList'
 import Cart from '@/components/books/Cart'
+
+import Email from '@/components/email/Email'
+
 
 Vue.use(Router)
 
 export default new Router({
+  components:{
+    Email
+  },
   routes: [
     {
       path: '/',
@@ -22,6 +29,12 @@ export default new Router({
       path: '/cart',
       name: 'cart',
       component: Cart
+    },
+    {
+      path: '/email',
+      name: 'Email',
+      component: Email
+
     }
   ]
 })
