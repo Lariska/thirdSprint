@@ -7,7 +7,8 @@
     </email-list>
   </div>
   <div class = "email-inner">
-    <email-details />
+    <email-details
+     :email="selectedEmail"/>
   </div>
 </div>
 
@@ -21,8 +22,31 @@
    components: {EmailList, EmailDetails},
   data () {
     return {
-      emails: [ {subject: "Kill bill", body: "Bad movie", isRead: false} ],
-      selectedEmail: {subject: "Kill bill", body: "Bad movie", isRead: false}
+      emails: [ 
+      {subject: "Kill bill", body: "Bad movie1", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie2", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie3", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie4", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie5", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie6", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie7", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie8", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie9", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie10", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+      {subject: "Kill bill", body: "Bad movie", isRead: false},
+
+      
+       ],
+      selectedEmail: {subject: "Kill bill", body: "DQWDQWDQWDQWDQWDQWDWQDDQWDWQDQWDQWD", isRead: false}
     }
   }
 }
@@ -44,15 +68,15 @@ body{
 .emails{
   display: flex;
   flex-wrap: wrap;
-  max-width: 30%;
+  width: 30%;
   max-height: 100%;
   background-color: gray;
 }
 .email-inner{
   display: flex;
   flex-wrap: wrap;
-  max-width: 70%;
-  max-height: 100%;
-  background-color: black;
+  /*max-width: 70%;*/
+  /*max-height: 100%;*/
+  background-color: white;
 }
 </style>

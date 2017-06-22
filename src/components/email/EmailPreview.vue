@@ -1,5 +1,5 @@
 <template>
-<h4>{{email.subject}}</h4>
+<li :class="{selected : email.isSelected}">{{email.subject}}</li>
 </template>
 
 <script>
@@ -14,6 +14,11 @@ export default {
 </script>
 
 
-<style >
-
+<style scoped>
+  li{
+    list-style-type: none;
+  }
+  .selcted{
+    background-color: red;
+  }
 </style>
