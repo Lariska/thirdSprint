@@ -1,27 +1,37 @@
 <template>
-<div class = "main">
-  <div class = "emails">
-    <email-list 
-    :emails="emails"
-    :selectedEmail="selectedEmail"
-    @selectAnotherMail="selectEmail">
-    </email-list>
+  <div>
+    <div class = "main">
+      <div class = "emails">
+        <email-filter
+        ></email-filter>
+        <email-list
+        class="email-list"
+        :emails="emails"
+        :selectedEmail="selectedEmail"
+        @selectAnotherMail="selectEmail">
+        </email-list>
+      </div>
+      <div class = "email-inner">
+        <email-details
+        :email="selectedEmail"
+        @delete="deleteEmail(selectedEmail)" >
+        </email-details>
+      </div>
+    </div>
+    <email-status
+      :emails="emails"
+    ></email-status>
   </div>
-  <div class = "email-inner">
-    <email-details
-     :email="selectedEmail"
-     @delete="deleteEmail(selectedEmail)" />
-  </div>
-</div>
-
 </template>
 
 <script>
   import EmailList from './EmailList';
   import EmailDetails from './EmailDetails';
+  import EmailStatus from './EmailStatus';
+  import EmailFilter from './EmailFilter';
   export default {
   name: 'Email',
-   components: {EmailList, EmailDetails},
+  components: {EmailList, EmailDetails, EmailStatus, EmailFilter},
   data () {
     return {
       emails: [ 
@@ -65,16 +75,23 @@
         }
       });
       //this.selectedEmail = this.emails[savedIdx + 1];
-      if( savedIdx === this.emails.length){   //check if the next id is valid
-        if( savedIdx -1 < 0 ){
+      if( savedIdx + 1 === this.emails.length){   //check if the next id is valid
+        if( (savedIdx -1) < 0 ){
           this.selectedEmail = null;
+          console.log("Nullified SelectedEmail")
         }
-        else this.emails[savedIdx - 1];
+        else{
+           this.selectedEmail=this.emails[savedIdx - 1];
+           console.log("changed the SelectedEmail")
+        }
       }
       else{
         this.selectedEmail = this.emails[savedIdx + 1];
+        console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + this.emails.length)
+
       }
       this.emails.splice(savedIdx,1);
+      console.log("selected Email:="+this.selectedEmail);
     }
   },
   created(){
@@ -87,27 +104,38 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 html{
-  max-height: 100%;
+  height: 100%;
 }
 body{
   max-height: 100%;
 }
+div:first-of-type{
+  height: 100%;
+}
+email-status{
+  height: 100%;
+}
 .main{
   display: flex;
   flex-wrap: nowrap;
-  max-height: 100%;
+  height: 100%;
 }
 .emails{
   display: flex;
   flex-wrap: wrap;
   width: 30%;
   max-height: 100%;
+  
+}
+.email-list{
   background-color: gray;
+  width: 100%;
 }
 .email-inner{
   display: flex;
   flex-wrap: wrap;
-  /*max-width: 70%;*/
+  width: 100%;
+  flex-shrink: 99;
   /*max-height: 100%;*/
   background-color: white;
 }

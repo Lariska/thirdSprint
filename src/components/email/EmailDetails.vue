@@ -37,5 +37,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /*align-content: space-between;*/
+  }
+  .inner-email button{
+    margin-top:auto;
   }
 </style>

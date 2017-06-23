@@ -4,7 +4,8 @@
             <email-preview v-for="email in emails" 
             :email="email"
             @click.native="selectEmail(email)"
-            :class="[selectedEmail === email ? 'selected' : '']" />
+            :class="[selectedEmail === email ? 'selected' : '']" > 
+            </email-preview>
         </ul>
     </div>
 </template>
