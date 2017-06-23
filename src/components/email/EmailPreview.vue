@@ -1,5 +1,5 @@
 <template>
-<li :class="{selected : email.isRead,}">{{email.subject}}</li>
+<li :class="{read : email.isRead,}">{{email.subject}}</li>
 </template>
 
 <script>

@@ -1,6 +1,9 @@
 <template>
-  <p v-if="isSelected" >{{selectedEmail.body}}</p>
-  <p v-else>{{email.body}}</p>
+  <div class = "inner-email">
+    <p>{{email.body}}</p>
+    <!--<p v-else>{{email.body}}</p>-->
+    <button @click="deleteEmail()">Delete</button>
+  </div>
 </template>
 
 <script>
@@ -9,30 +12,39 @@
   export default {
     name: 'email-details',
     props: ['email'],
+    methods: {
+      // getEmail(){
+      //   return ()? : ;
+      // },
+      deleteEmail(){
+        console.log("delete button pushed");
+        this.$emit('delete');
+      }
+    },
     data () {
       return {
-        selectedEmail: null
+        // selectedEmail: null
       }
     },
-    computed:{
-      isSelected(){
-        eventBus.$on('anotherEmailSelcted', email => {
-          this.selectedEmail = email;
-        });
-        return (this.selectedEmail)? true : false;
-      }
-    },
+    // computed:{
+    //   selected(){
+    //     eventBus.$on('anotherEmailSelcted', email => {
+    //       this.selectedEmail = email;
+    //     });
+    //     return this.selectedEmail;
+    //   }
+    // },
     created(){
-      // selectedEmail = email;
+      //  this.selectedEmail = this.email;
     },
-    methods: {
-      anotherEmailSelcted(email){
-        console.log(`the mail is ${email.body}`)
-      },
-    }
+   
   }
 </script>
 
 <style>
-  
+  .inner-email{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 </style>

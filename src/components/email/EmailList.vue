@@ -4,7 +4,7 @@
             <email-preview v-for="email in emails" 
             :email="email"
             @click.native="selectEmail(email)"
-            :class="{ stam: stamkaha }" />
+            :class="[selectedEmail === email ? 'selected' : '']" />
         </ul>
     </div>
 </template>
@@ -16,33 +16,34 @@ export default {
     components: { EmailPreview },
     name: 'email-list',
     props: ['emails', 'selectedEmail'],
-    data() {
-        return {
-            stamkaha: true
-        }
-    },
+    // data() {
+    //     return {
+    //         stamkaha: true
+    //     }
+    // },
     methods: {
         selectEmail(email){
             email.isRead = true;
             // el.classList.add('selected');
             eventBus.$emit('anotherEmailSelcted', email);
+            this.$emit('selectAnotherMail',email);
             // debugger;
         }
     },
-    computed :{
-        // isSelected(){
-        //     return ()? : ;
-        // }
-    }
+    // computed :{
+    //     isSelected(){
+    //         return this.selectedEmail === email;
+    //     }
+    // }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .stam{
+    .selected{
         color:blue;
     }
-    .selected{
+    .read{
         background-color: whitesmoke;
     }
     div ul{

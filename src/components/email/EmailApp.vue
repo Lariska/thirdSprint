@@ -3,12 +3,14 @@
   <div class = "emails">
     <email-list 
     :emails="emails"
-    :selectedEmail="selectedEmail">
+    :selectedEmail="selectedEmail"
+    @selectAnotherMail="selectEmail">
     </email-list>
   </div>
   <div class = "email-inner">
     <email-details
-     :email="selectedEmail"/>
+     :email="selectedEmail"
+     @delete="deleteEmail(selectedEmail)" />
   </div>
 </div>
 
@@ -23,16 +25,16 @@
   data () {
     return {
       emails: [ 
-      {subject: "Kill bill", body: "Bad movie1", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie2", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie3", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie4", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie5", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie6", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie7", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie8", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie9", isRead: false, isSelected: false},
-      {subject: "Kill bill", body: "Bad movie10", isRead: false, isSelected: false},
+      {subject: "Kill bill", body: "lorem ipsu", isRead: false},
+      {subject: "Kill bill", body: "Bad movie2", isRead: false},
+      {subject: "Kill bill", body: "Bad movie3", isRead: false},
+      {subject: "Kill bill", body: "Bad movie4", isRead: false},
+      {subject: "Kill bill", body: "Bad movie5", isRead: false},
+      {subject: "Kill bill", body: "Bad movie6", isRead: false},
+      {subject: "Kill bill", body: "Bad movie7", isRead: false},
+      {subject: "Kill bill", body: "Bad movie8", isRead: false},
+      {subject: "Kill bill", body: "Bad movie9", isRead: false},
+      {subject: "Kill bill", body: "Bad movie10", isRead: false},
       {subject: "Kill bill", body: "Bad movie", isRead: false},
       {subject: "Kill bill", body: "Bad movie", isRead: false},
       {subject: "Kill bill", body: "Bad movie", isRead: false},
@@ -49,6 +51,15 @@
       selectedEmail: null,
     }
     
+  },
+  methods :{
+    selectEmail(email){
+      this.selectedEmail = email;
+    },
+    
+    deleteEmail(email){
+      console.log(email.body);
+    }
   },
   created(){
       this.selectedEmail= this.emails[0];
