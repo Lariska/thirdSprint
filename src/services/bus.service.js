@@ -10,3 +10,4 @@ export const eventBus = new Vue();
 // eventBus.$on('saved', data => {
 //   console.log('Reciving data', data);
 // })
+//<form v-on:submit.prevent="onSubmit"></form>

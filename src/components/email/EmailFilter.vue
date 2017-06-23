@@ -1,6 +1,8 @@
 <template>
 <div class = "filter">
-    <input type="text" name="fname">
+    <!-- <input type="text" name="fname">-->
+    <input 
+    v-model="onInput">
     <button>Search</button>
 </div>
 </template>
@@ -10,13 +12,16 @@ export default {
   name: 'email-filter',
   data () {
     return {
+        onInput:'',
+    }
+  },
+  watch: {
+    onInput: function( oldVal, newVal ){
+        console.log('oldVal:' + oldVal + " newVal:" + newVal );
     }
   },
   methods: {
-    book(){
-    },
-    email(){
-    }
+    
   }
 }
 </script>
@@ -30,5 +35,6 @@ export default {
  }
  .filter{
      width: 100%;
+     background-color: goldenrod;
  }
 </style>

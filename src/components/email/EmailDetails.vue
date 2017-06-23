@@ -9,7 +9,6 @@
 
 <script>
   import { eventBus } from '../../services/bus.service.js';
-  
   export default {
     name: 'email-details',
     props: ['email'],

@@ -2,8 +2,6 @@
   <div>
     <div class = "main">
       <div class = "emails">
-        <email-filter
-        ></email-filter>
         <email-list
         class="email-list"
         :emails="emails"
@@ -28,80 +26,58 @@
   import EmailList from './EmailList';
   import EmailDetails from './EmailDetails';
   import EmailStatus from './EmailStatus';
-  import EmailFilter from './EmailFilter';
+  import EmailService from '../../services/email.service.js';
+
   export default {
-  name: 'Email',
-  components: {EmailList, EmailDetails, EmailStatus, EmailFilter},
-  data () {
-    return {
-      emails: [ 
-      {subject: "Kill bill", body: "lorem ipsu", isRead: false},
-      {subject: "Kill bill", body: "Bad movie2", isRead: false},
-      {subject: "Kill bill", body: "Bad movie3", isRead: false},
-      {subject: "Kill bill", body: "Bad movie4", isRead: false},
-      {subject: "Kill bill", body: "Bad movie5", isRead: false},
-      {subject: "Kill bill", body: "Bad movie6", isRead: false},
-      {subject: "Kill bill", body: "Bad movie7", isRead: false},
-      {subject: "Kill bill", body: "Bad movie8", isRead: false},
-      {subject: "Kill bill", body: "Bad movie9", isRead: false},
-      {subject: "Kill bill", body: "Bad movie10", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
-      {subject: "Kill bill", body: "Bad movie", isRead: false},
+    name: 'Email',
+    components: {EmailList, EmailDetails, EmailStatus},
+    data () {
+      return {
+        emails: [ 
+        {subject: "Kill bill", body: "lorem ipsu", isRead: false},
+        {subject: "Kill bill", body: "Bad movie2", isRead: false},
+        {subject: "Kill bill", body: "Bad movie3", isRead: false},
+        {subject: "Kill bill", body: "Bad movie4", isRead: false},
+        {subject: "Kill bill", body: "Bad movie5", isRead: false},
+        {subject: "Kill bill", body: "Bad movie6", isRead: false},
+        {subject: "Kill bill", body: "Bad movie7", isRead: false},
+        {subject: "Kill bill", body: "Bad movie8", isRead: false},
+        {subject: "Kill bill", body: "Bad movie9", isRead: false},
+        {subject: "Kill bill", body: "Bad movie10", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        {subject: "Kill bill", body: "Bad movie", isRead: false},
 
+        
+        ],
+        selectedEmail: null,
+      }
       
-       ],
-      selectedEmail: null,
-    }
-    
-  },
-  methods :{
-    selectEmail(email){
-      this.selectedEmail = email;
     },
-    
-    deleteEmail(emailToDel){
-      var savedIdx;
-      this.emails.forEach( ( email , idx ) => {
-        if(email === emailToDel){
-          savedIdx = idx;
-        }
-      });
-      //this.selectedEmail = this.emails[savedIdx + 1];
-      if( savedIdx + 1 === this.emails.length){   //check if the next id is valid
-        if( (savedIdx -1) < 0 ){
-          this.selectedEmail = null;
-          console.log("Nullified SelectedEmail")
-        }
-        else{
-           this.selectedEmail=this.emails[savedIdx - 1];
-           console.log("changed the SelectedEmail")
-        }
+    methods :{
+      selectEmail(email){
+        this.selectedEmail = email;
+      },      
+      deleteEmail(emailToDel){
+        this.emails = EmailService.deleteEmail(this.email, this.emails);
+      },
+    },
+      created(){
+          console.log("created")
+          this.selectedEmail= this.emails[0];
+          this.emails[0].isRead = true;
       }
-      else{
-        this.selectedEmail = this.emails[savedIdx + 1];
-        console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + this.emails.length)
-
-      }
-      this.emails.splice(savedIdx,1);
-      console.log("selected Email:="+this.selectedEmail);
-    }
-  },
-  created(){
-      this.selectedEmail= this.emails[0];
-      this.emails[0].isRead = true;
-    }
-}
+  }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+// <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 html{
   height: 100%;

@@ -1,5 +1,7 @@
 <template>
-<li :class="{read : email.isRead,}">{{email.subject}}</li>
+<div>
+  <li :class="{read : email.isRead,}">{{email.subject}}</li>
+</div>
 </template>
 
 <script>
@@ -16,6 +18,9 @@ export default {
 
 
 <style scoped>
+  .read{
+        background-color: whitesmoke;
+    }
   li{
     list-style-type: none;
   }

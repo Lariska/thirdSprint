@@ -1,5 +1,6 @@
 <template>
     <div>
+        <email-filter></email-filter>
         <ul>
             <email-preview v-for="email in emails" 
             :email="email"
@@ -13,8 +14,9 @@
 <script>
 import { eventBus } from '../../services/bus.service.js';
 import EmailPreview from './EmailPreview'
+import EmailFilter from './EmailFilter';
 export default {
-    components: { EmailPreview },
+    components: { EmailPreview, EmailFilter },
     name: 'email-list',
     props: ['emails', 'selectedEmail'],
     // data() {
@@ -43,9 +45,6 @@ export default {
 <style scoped>
     .selected{
         color:blue;
-    }
-    .read{
-        background-color: whitesmoke;
     }
     div ul{
         display: flex;
