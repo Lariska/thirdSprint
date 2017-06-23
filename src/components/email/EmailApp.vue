@@ -57,8 +57,24 @@
       this.selectedEmail = email;
     },
     
-    deleteEmail(email){
-      console.log(email.body);
+    deleteEmail(emailToDel){
+      var savedIdx;
+      this.emails.forEach( ( email , idx ) => {
+        if(email === emailToDel){
+          savedIdx = idx;
+        }
+      });
+      //this.selectedEmail = this.emails[savedIdx + 1];
+      if( savedIdx === this.emails.length){   //check if the next id is valid
+        if( savedIdx -1 < 0 ){
+          this.selectedEmail = null;
+        }
+        else this.emails[savedIdx - 1];
+      }
+      else{
+        this.selectedEmail = this.emails[savedIdx + 1];
+      }
+      this.emails.splice(savedIdx,1);
     }
   },
   created(){

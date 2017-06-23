@@ -1,8 +1,9 @@
 <template>
   <div class = "inner-email">
-    <p>{{email.body}}</p>
-    <!--<p v-else>{{email.body}}</p>-->
-    <button @click="deleteEmail()">Delete</button>
+    <div v-if="email">
+      <p>{{email.body}}</p>
+      <button @click="deleteEmail()">Delete</button>
+    </div>
   </div>
 </template>
 
@@ -23,19 +24,9 @@
     },
     data () {
       return {
-        // selectedEmail: null
       }
     },
-    // computed:{
-    //   selected(){
-    //     eventBus.$on('anotherEmailSelcted', email => {
-    //       this.selectedEmail = email;
-    //     });
-    //     return this.selectedEmail;
-    //   }
-    // },
     created(){
-      //  this.selectedEmail = this.email;
     },
    
   }
