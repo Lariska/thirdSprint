@@ -20,6 +20,9 @@ export default {
 <style scoped>
   .read{
         background-color: whitesmoke;
+  }
+  li:hover{
+      cursor: pointer;
     }
   li{
     list-style-type: none;

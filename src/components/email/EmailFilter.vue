@@ -16,8 +16,9 @@ export default {
     }
   },
   watch: {
-    onInput: function( oldVal, newVal ){
+    onInput: function( newVal, oldVal ){
         console.log('oldVal:' + oldVal + " newVal:" + newVal );
+        this.$emit('filterChanged', newVal);
     }
   },
   methods: {

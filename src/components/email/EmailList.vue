@@ -1,8 +1,10 @@
 <template>
     <div>
-        <email-filter></email-filter>
+        <email-filter
+        @filterChanged="renderRelevant"
+        ></email-filter>
         <ul>
-            <email-preview v-for="email in emails" 
+            <email-preview v-for="email in emailsToRender" 
             :email="email"
             @click.native="selectEmail(email)"
             :class="[selectedEmail === email ? 'selected' : '']" > 
@@ -19,11 +21,11 @@ export default {
     components: { EmailPreview, EmailFilter },
     name: 'email-list',
     props: ['emails', 'selectedEmail'],
-    // data() {
-    //     return {
-    //         stamkaha: true
-    //     }
-    // },
+    data() {
+        return {
+            emailsToRender: this.emails
+        }
+    },
     methods: {
         selectEmail(email){
             email.isRead = true;
@@ -31,6 +33,11 @@ export default {
             eventBus.$emit('anotherEmailSelcted', email);
             this.$emit('selectAnotherMail',email);
             // debugger;
+        },
+        renderRelevant(filterVal){
+            this.emailsToRender = this.emails.filter( email =>{
+                return email.subject.toLowerCase().includes(filterVal.toLowerCase());
+            });
         }
     },
     // computed :{
