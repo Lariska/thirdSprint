@@ -4,10 +4,9 @@
       <h1>{{ msg }}</h1>
     </div>
     <hr/>
-          <router-link to ="/place"><img src="../../assets/maps.png" class="image" @click="places"></router-link>
-          <router-link to ="/email"><img src="../../assets/Email.png" class="image" @click="email"></router-link>
-          <router-link to ="/book-list"><img src="../../assets/Book.png" class="image"></router-link>
-
+        <router-link to ="/place"><img src="../../assets/maps.png" class="image"></router-link>
+        <router-link to ="/email"><img src="../../assets/Email.png" class="image"></router-link>
+        <router-link to ="/book-list"><img src="../../assets/Book.png" class="image"></router-link>
     <hr/>
   </section>
 </template>

@@ -1,15 +1,5 @@
 <template>
 <section>
-      <nav class="main-nav flex align-center justify-center">
-      <ul class="clean-list flex flex align-center">
-          <li class="active" @click="hello"><span>Appsus</span></li>
-          <li class="logo flex align-center justify-center">
-              <img src="../../assets/logo.png" alt="Company name">
-          </li>
-          <li class="active"><span>About</span></li>
-      </ul>
-  </nav>
-
       <gmap-map
           :center="getCenter"
           :zoom="7"
@@ -35,12 +25,28 @@
             @click="toggleInfoWindow(m,index)">
         </gmap-marker>
       </gmap-map>
-      
-
-  <footer class="main-footer flex justify-center align-center clean-list">
-    <li>&copy; 2017 Coding Academy</span></li>
-  </footer>
-</section>
+      <div class="delete">
+        <!--<button @click="deleteMarker">Delete</button>-->
+        <el-button type="danger" @click="deleteMarker">Delete</el-button>
+        </div>
+        <div class="instruction"> 
+        <el-collapse v-model="activeNames" @change="handleChange">
+        <el-collapse-item title="Instructions" name="1">
+            <div>
+               1) Rightclick on map to marker some place. 
+            </div>
+            <div>
+               2) Click on input write something. 
+            </div>
+            <div>
+               3) Click Enter to save text in input.
+            </div>
+            <div>
+              4) Click on marker to delete it.
+            </div>
+        </el-collapse-item>
+    </el-collapse>
+      </div>
 </section>
 </template>
 
@@ -64,7 +70,7 @@ export default {
           infoText: 'Add your place name here'
       }
       this.markers.push(marker);
-      this.$http.post('/add_marker', marker);
+      this.$http.post('/add_marker/', marker).then(response => {});
     },
     hello(){
       this.$router.push({name: 'hello'});
@@ -117,8 +123,22 @@ export default {
         var text = info.firstChild.textContent;
         for (var i = 0; i < this.markers.length; i++) {
           if (this.markers[i].position.lat == this.center.lat && this.markers[i].position.lng == this.center.lng) {
-            this.markers[i].infoText = text;
+            this.$http.put('/edit_marker/', {marker: this.markers[i], new_text: text}).then(response => {
+              this.markers[i].infoText = text;
+            });
+            break;
           }
+        }
+      }
+    },
+    deleteMarker (event) {
+      for (var i = 0; i < this.markers.length; i++) {
+        if (this.markers[i].position.lat == this.center.lat && this.markers[i].position.lng == this.center.lng) {
+          this.$http.delete('/delete_marker/', {body: this.markers[i]}).then(response => {
+            this.infoWinOpen = false;
+            this.markers.splice(i, 1);
+          });
+          break;
         }
       }
     }
@@ -137,32 +157,20 @@ export default {
       }
       return this.center;
     }
+  },
+  created () {
+    this.$http.get('/get_markers/').then(response => {
+      this.markers = response.body;
+    });
   }
 }
 </script>
 
 
 <style scoped>
-  ul {
-  list-style-type: none;
-  padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  footer{
-    padding: 20px;
-  }
-  .active{
-    font-family: Lato;
-    font-size:1.90rem;
-    color: white;
-  }
-  .main-nav{
-    background-color: black;
-  }
-  .clean-list{
-    margin: 0;
+  .instruction, .delete{
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 </style>

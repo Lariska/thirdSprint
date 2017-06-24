@@ -1,6 +1,4 @@
 <template>
-
-
     <li class="book-preview">
         <h2>{{book.name}}</h2>
         <h3>{{book.author}}</h3>
