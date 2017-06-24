@@ -3,10 +3,9 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import BookList from '@/components/books/BookList'
 import Cart from '@/components/books/Cart'
-
 import EmailApp from '@/components/email/EmailApp'
-
 import PlaceApp from '@/components/places/PlaceApp'
+
 import about from '@/components/main/about'
 
 

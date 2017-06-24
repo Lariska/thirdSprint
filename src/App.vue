@@ -1,26 +1,56 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
+    <nav class="main-nav flex align-center justify-center">
+    <ul class="clean-list flex flex align-center">
+        <router-link to="/" class="active"><span>Appsus</span></router-link>
+          <li class="logo flex align-center justify-center">
+              <img src="./assets/logo.png" alt="Company name">
+          </li>
+          <router-link to="/about" class="active"><span>About</span></router-link>
+      </ul>
+    </nav>
+
+    <AppBar></AppBar>
     <router-view></router-view>
+
+    <footer class="main-footer flex justify-center align-center clean-list">
+        <li>&copy; 2017 Coding Academy</span>
+        </li>
+    </footer>
   </div>
 </template>
 
 <script>
+import AppBar from './components/main/AppBar'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    AppBar
+  }
 }
 </script>
 
-<style>
+<style scope>
 body{
-    background-color: lightblue;
-    margin: 0;
+  background-color: lightblue;
 }
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.active{
+  font-family: Lato;
+  font-size:1.90rem;
+  color: white;
+}
+.main-nav{
+  background-color: black;
+}
+.clean-list{
+  margin: 0;
 }
 </style>

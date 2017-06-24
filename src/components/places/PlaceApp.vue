@@ -30,20 +30,20 @@
         <el-button type="danger" @click="deleteMarker">Delete</el-button>
         </div>
         <div class="instruction"> 
-        <el-collapse v-model="activeNames" @change="handleChange">
+        <el-collapse>
         <el-collapse-item title="Instructions" name="1">
-            <div>
+            <h3>
                1) Rightclick on map to marker some place. 
-            </div>
-            <div>
+            </h3>
+            <h3>
                2) Click on input write something. 
-            </div>
-            <div>
+            </h3>
+            <h3>
                3) Click Enter to save text in input.
-            </div>
-            <div>
+            </h3>
+            <h3>
               4) Click on marker to delete it.
-            </div>
+            </h3>
         </el-collapse-item>
     </el-collapse>
       </div>
@@ -63,6 +63,7 @@ export default {
         infoWindowPos: { lat: 0, lng: 0}
       }
   },
+  
   methods: {
     addMarker(event) {
       var marker = {
