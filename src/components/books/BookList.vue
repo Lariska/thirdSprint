@@ -1,5 +1,9 @@
 <template>
-    <section v-if="books">
+<section v-if="books">
+<div>
+    <h1>Books</h1>
+</div>
+    <!--<section v-if="books">-->
         <BookFilter @set-filter="setFilter"></BookFilter>
         <h2>We have {{books.length}} Books</h2>
         <button @click="isCreateMode=true">+</button>

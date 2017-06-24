@@ -1,89 +1,46 @@
-<template>
-<section>
+  <template>
+  <div id="app">
+    <!--<header>-->
     <nav class="main-nav flex align-center justify-center">
-      <ul class="clean-list flex flex align-center">
-          <li class="active"><span>Appsus</span></li>
+    <ul class="clean-list flex flex align-center">
+        <router-link to="/" class="active"><span>Appsus</span></router-link>
           <li class="logo flex align-center justify-center">
               <img src="../assets/logo.png" alt="Company name">
           </li>
-          <!--<li class="active"><a href="#about"><span>About</span></a></li>-->
-          <li class="active"><span>About</span></li>
+          <router-link to="/about" class="active"><span>About</span></router-link>
       </ul>
-  </nav>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
-  <div>
-    <!--<a name="about"></a>-->
-    <h2 class="title">About Us</h2>
-    <p class="aboutUs">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam eaque illo quibusdam, consectetur eos facere cum perspiciatis
-      aperiam voluptas inventore nesciunt, assumenda nemo, maiores, deserunt ratione voluptatum sint expedita
-      labore! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam eaque illo quibusdam, consectetur eos facere cum perspiciatis
-      aperiam voluptas inventore nesciunt, assumenda nemo, maiores, deserunt ratione voluptatum sint expedita
-      labore!
-    </p>
-  </div>
-  <div class="inner-links flex justify-center align-center">
-    <el-row>
-      <el-col>
-        <el-card class="card" :body-style="{ padding: '0px' }">
-          <div style="padding: 14px;">
-            <span class="title">Appsus</span>
-          </div>
-          <img src="../assets/maps.png" class="image" @click="places">
-          <img src="../assets/Email.png" class="image" @click="email">
-          <img src="../assets/Book.png" class="image" @click="book">
-        </el-card>
-      </el-col>
-  </el-row>
+    </nav>
 
-
-
-  </div>
+    <AppBar></AppBar>
+    <router-view></router-view>
 
 <footer class="main-footer flex justify-center align-center clean-list">
   <li>&copy; 2017 Coding Academy</span>
   </li>
 </footer>
-</section>
+  </div>
 </template>
 
 <script>
+import AppBar from '../components/main/AppBar'
 export default {
   name: 'hello',
+  components: {
+    AppBar
+  },
   data () {
     return {
       msg: 'Welcome to Appsus'
-    }
-  },
-  methods: {
-    book(){
-      this.$router.push({name: 'book-list'});
-    },
-    email(){
-      this.$router.push({name: 'email'});
-    },
-    places(){
-      this.$router.push({name: 'place'});
     }
   }
 }
 </script>
 
 <style scoped>
-h1{
-    margin: 100px;
-}
-h2 {
-  font-weight: normal;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
 }
-
 li {
   display: inline-block;
   margin: 0 10px;
@@ -93,25 +50,25 @@ li {
   font-size:1.90rem;
   color: white;
 }
-.title{
+/*.title{
   text-align: left;
   margin: 50px;
   font-family: Lato;
   font-size:1.90rem;
-}
-.aboutUs{
+}*/
+/*.aboutUs{
   text-align: left;
   margin: 50px;
-}
+}*/
 .main-nav{
   background-color: black;
 }
-img{
+/*img{
   margin: 50px;
-}
-.card{
+}*/
+/*.card{
   background-color: lightblue;
-}
+}*/
 .clean-list{
   margin: 0;
 }

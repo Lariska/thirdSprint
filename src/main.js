@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 import App from './App'
 import router from './router'
 import Element from 'element-ui'
@@ -6,6 +7,7 @@ import 'element-ui/lib/theme-default/index.css'
 import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.use(Element)
+Vue.use(VueResource);
 
 Vue.use(VueGoogleMaps, {
   load: {

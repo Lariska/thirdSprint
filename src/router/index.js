@@ -7,6 +7,7 @@ import Cart from '@/components/books/Cart'
 import EmailApp from '@/components/email/EmailApp'
 
 import PlaceApp from '@/components/places/PlaceApp'
+import about from '@/components/main/about'
 
 
 Vue.use(Router)
@@ -41,7 +42,11 @@ export default new Router({
       path: '/place',
       name: 'place',
       component: PlaceApp
-
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: about
+    }
   ]
 })
