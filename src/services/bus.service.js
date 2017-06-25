@@ -3,10 +3,11 @@ import Vue from 'vue'
 export const eventBus = new Vue();
 
 
-// eventBus.$on('saved', data => {
-//   console.log('Transforming data to brother element', data);
+// eventBus.$emit('saved', data => {
+//   console.log('Transforming data', data);
 // })
 
 // eventBus.$on('saved', data => {
-//   console.log('Transforming data to brother element3', data);
+//   console.log('Reciving data', data);
 // })
+//<form v-on:submit.prevent="onSubmit"></form>

@@ -1,5 +1,7 @@
 <template>
-<li :class="{selected : email.isSelected}">{{email.subject}}</li>
+<div>
+  <li :class="{read : email.isRead,}">{{email.subject}}</li>
+</div>
 </template>
 
 <script>
@@ -9,12 +11,19 @@ export default {
   data () {
     return {
     }
-  }
+  },
+
 }
 </script>
 
 
 <style scoped>
+  .read{
+        background-color: whitesmoke;
+  }
+  li:hover{
+      cursor: pointer;
+    }
   li{
     list-style-type: none;
   }

@@ -1,38 +1,44 @@
 <template>
-  <p v-if="isSelected" >{{selectedEmail.body}}</p>
-  <p v-else>{{email.body}}</p>
+  <div class = "inner-email">
+    <div v-if="email">
+      <p>{{email.body}}</p>
+      <button @click="deleteEmail()">Delete</button>
+    </div>
+  </div>
 </template>
 
 <script>
   import { eventBus } from '../../services/bus.service.js';
-  
   export default {
     name: 'email-details',
     props: ['email'],
-    data () {
-      return {
-        selectedEmail: null
+    methods: {
+      // getEmail(){
+      //   return ()? : ;
+      // },
+      deleteEmail(){
+        console.log("delete button pushed");
+        this.$emit('delete');
       }
     },
-    computed:{
-      isSelected(){
-        eventBus.$on('anotherEmailSelcted', email => {
-          this.selectedEmail = email;
-        });
-        return (this.selectedEmail)? true : false;
+    data () {
+      return {
       }
     },
     created(){
-      // selectedEmail = email;
     },
-    methods: {
-      anotherEmailSelcted(email){
-        console.log(`the mail is ${email.body}`)
-      },
-    }
+   
   }
 </script>
 
 <style>
-  
+  .inner-email{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*align-content: space-between;*/
+  }
+  .inner-email button{
+    margin-top:auto;
+  }
 </style>

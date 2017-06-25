@@ -1,9 +1,15 @@
 <template>
     <div>
+        <email-filter
+        @filterChanged="renderRelevantTxt"
+        @statusChanged="renderRelevantStatus"
+        ></email-filter>
         <ul>
-            <div><email-preview v-for="email in emails" 
+            <email-preview v-for="email in getEmails" 
             :email="email"
-            @click.native="selectEmail(email)" /></div>
+            @click.native="selectEmail(email)"
+            :class="[selectedEmail === email ? 'selected' : '']" > 
+            </email-preview>
         </ul>
     </div>
 </template>
@@ -11,26 +17,48 @@
 <script>
 import { eventBus } from '../../services/bus.service.js';
 import EmailPreview from './EmailPreview'
+import EmailFilter from './EmailFilter';
 export default {
-    components: { EmailPreview },
+    components: { EmailPreview, EmailFilter },
     name: 'email-list',
     props: ['emails', 'selectedEmail'],
-    // data() {
-    //     return {
-    //         emails: emails;
-    //     }
-    // }
-    computed :{
-      isEmailSelected(email){
-        return email.isSelected;
-      }
+    data() {
+        return {
+            emailsToRender: this.emails,
+            gFilterVar: '',
+            gStatusFilter:'all'
+        }
     },
     methods: {
         selectEmail(email){
-            email.isSelected = true;
+            email.isRead = true;
             // el.classList.add('selected');
-            eventBus.$emit('anotherEmailSelcted', email);
+            // eventBus.$emit('anotherEmailSelcted', email);
+            this.$emit('selectAnotherMail',email);
             // debugger;
+        },
+        renderRelevantTxt(filterVal){
+            this.gFilterVar = filterVal;
+            //return this.filterEmail();
+            
+        },
+        renderRelevantStatus(filterVal){
+            this.gStatusFilter = filterVal;
+            console.log('renderRelevatnStatus')
+        },
+        filterEmail(){
+            return this.emailsToRender = this.emails.filter( email =>{
+                return email.subject.toLowerCase().includes(this.gFilterVar.toLowerCase()) 
+                &&( this.gStatusFilter === 'all' 
+                ||  this.gStatusFilter === 'read' && email.isRead
+                ||  this.gStatusFilter === 'unread' && !email.isRead );
+            });
+        }
+
+    },
+    computed :{
+        getEmails(){
+           return this.filterEmail();
         }
     }
 }
@@ -39,7 +67,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .selected{
-        background-color: whitesmoke;
+        color:blue;
     }
     div ul{
         display: flex;
@@ -47,5 +75,8 @@ export default {
         padding-right: 40px;
         /*justify-content: space-between;*/
         justify-content: center;
+    }
+    li{
+        cursor: pointer;
     }
 </style>
