@@ -7,10 +7,7 @@
 
         <el-table
             @row-click="selectEmail"
-<<<<<<< HEAD
-=======
 
->>>>>>> a87f52274074db9947b1c2efb5110e14af59de45
             :data="getEmails"
             style="width: 100%">
             <el-table-column
