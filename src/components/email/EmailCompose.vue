@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style>
+.el-textarea + div{
+    margin:0 !important;
+}
 .compose{
     display:flex;
     flex-direction: column;

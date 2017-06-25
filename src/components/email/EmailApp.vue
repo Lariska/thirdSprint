@@ -85,17 +85,27 @@
           if(answer.selectedEmailIdx !== null) this.selectedEmail = this.emails[answer.selectedEmailIdx];
           
         })
-        
-        // this.selectedEmail = tempMail;
-        // this.selectedEmail = emailsProp.selectedEmail;
-        // this.emails = emailsProp.emails;
-        // console.log(this.emails);
       },
       composeEmail(){
         this.isComposing = true;
       },
       sendEmail(subject, body){
-          this.emails.push({subject, body, isRead:false});
+        var id = +this.getLastEmailId()+1;
+        console.log(id);
+        this.emails.push({subject, body, isRead:false, id:id});
+        EmailService.sendNewMail(this.emails);
+
+      },
+      getLastEmailId(){
+        var id;
+        var idx =this.emails.length-1;
+        // console.log(this.emails.length-1);
+         try{
+           id = this.emails[idx].id
+          }catch(e){
+            id = 0;
+          }
+          return id;
       }
     },
       created(){
