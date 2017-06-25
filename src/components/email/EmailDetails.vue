@@ -29,13 +29,9 @@
     display: flex;
     flex-direction: column;
     align-content: space-between;
-
-    width:100%;
+    /*width:100%;*/
   }
   .el-icon-delete{
     margin: 10px;
   }
-  /*.email{
-    margin: 100px;
-  }*/
 </style>
