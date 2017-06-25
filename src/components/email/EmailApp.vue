@@ -76,10 +76,19 @@
         this.isComposing = false;
       },      
       deleteEmail(emailToDel){
+        var tempMailId= null;
         var emailsProp = EmailService.deleteEmail(this.selectedEmail, this.emails);
-        this.selectedEmail = emailsProp.selectedEmail;
-        this.emails = emailsProp.emails;
-        console.log(this.emails);
+        emailsProp.then(answer =>{
+          this.emails = answer.emails;
+          console.log(answer.selectedEmailIdx);
+          if(answer.selectedEmailIdx !== null) this.selectedEmail = this.emails[answer.selectedEmailIdx];
+          
+        })
+        
+        // this.selectedEmail = tempMail;
+        // this.selectedEmail = emailsProp.selectedEmail;
+        // this.emails = emailsProp.emails;
+        // console.log(this.emails);
       },
       composeEmail(){
         this.isComposing = true;
