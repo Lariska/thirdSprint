@@ -1,29 +1,32 @@
 function deleteEmail(selectedEmail, emails){
 
     var savedIdx;
+    var selectedValue;
+    var newEmails = [];
       emails.forEach( ( email , idx ) => {
-        if(email === emailToDel){
+        if(email === selectedEmail){
           savedIdx = idx;
-        }
+        } else newEmails.push(email);
       });
+      console.log('saved idx: ' + savedIdx )
       //this.selectedEmail = this.emails[savedIdx + 1];
-      if( savedIdx + 1 === this.emails.length){   //check if the next id is valid
+      if( savedIdx + 1 === emails.length){   //check if the next id is valid
         if( ( savedIdx - 1 ) < 0 ){
-          selectedEmail = null;
+          selectedValue = null;
           console.log("Nullified SelectedEmail")
         }
         else{
-           selectedEmail=emails[savedIdx - 1];
+           selectedValue = emails[savedIdx - 1];
            console.log("changed the SelectedEmail")
         }
       }
       else{
-        selectedEmail = emails[savedIdx + 1];
-        console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + this.emails.length)
+        selectedValue = emails[savedIdx + 1];
+        console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + emails.length)
 
       }
-      console.log("selected Email:="+this.selectedEmail);
-      return emails.slice(savedIdx);
+      console.log("selected Email:="+selectedEmail);
+      return {emails:newEmails, selectedEmail:selectedValue};
       
 }
 export default {

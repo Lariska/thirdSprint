@@ -1,10 +1,11 @@
 <template>
     <div>
         <email-filter
-        @filterChanged="renderRelevant"
+        @filterChanged="renderRelevantTxt"
+        @statusChanged="renderRelevantStatus"
         ></email-filter>
         <ul>
-            <email-preview v-for="email in emailsToRender" 
+            <email-preview v-for="email in getEmails" 
             :email="email"
             @click.native="selectEmail(email)"
             :class="[selectedEmail === email ? 'selected' : '']" > 
@@ -23,7 +24,8 @@ export default {
     props: ['emails', 'selectedEmail'],
     data() {
         return {
-            emailsToRender: this.emails
+            emailsToRender: this.emails,
+            gFilterVar: ''
         }
     },
     methods: {
@@ -34,17 +36,26 @@ export default {
             this.$emit('selectAnotherMail',email);
             // debugger;
         },
-        renderRelevant(filterVal){
+        renderRelevantTxt(filterVal){
+            this.gFilterVar = filterVal;
             this.emailsToRender = this.emails.filter( email =>{
                 return email.subject.toLowerCase().includes(filterVal.toLowerCase());
             });
+        },
+        renderRelevantStatus(filterVal){
+            // this.emailsToRender = this.emails.filter( email =>{
+            //     return email.subject.toLowerCase().includes(filterVal.toLowerCase());
+            // });
         }
+
     },
-    // computed :{
-    //     isSelected(){
-    //         return this.selectedEmail === email;
-    //     }
-    // }
+    computed :{
+        getEmails(){
+           return this.emailsToRender = this.emails.filter( email =>{
+                return email.subject.toLowerCase().includes(this.gFilterVar.toLowerCase());
+            });
+        }
+    }
 }
 </script>
 

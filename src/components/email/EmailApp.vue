@@ -4,7 +4,7 @@
       <div class = "emails">
         <email-list
         class="email-list"
-        :emails="emails"
+        :emails="getEmails()"
         :selectedEmail="selectedEmail"
         @selectAnotherMail="selectEmail">
         </email-list>
@@ -23,7 +23,9 @@
 </template>
 
 <script>
+  import Vue from 'vue';
   import EmailList from './EmailList';
+  import { eventBus } from '../../services/bus.service.js';
   import EmailDetails from './EmailDetails';
   import EmailStatus from './EmailStatus';
   import EmailService from '../../services/email.service.js';
@@ -58,15 +60,25 @@
         
         ],
         selectedEmail: null,
+        //getEmails:null
       }
       
     },
+      
     methods :{
+       getEmails(){
+        return this.emails;
+      },
       selectEmail(email){
         this.selectedEmail = email;
       },      
       deleteEmail(emailToDel){
-        this.emails = EmailService.deleteEmail(this.email, this.emails);
+        var emailsProp = EmailService.deleteEmail(this.selectedEmail, this.emails);
+        this.selectedEmail = emailsProp.selectedEmail;
+        this.emails = emailsProp.emails;
+        eventBus.$emit('EmailsChanged');
+        console.log(this.emails);
+        // Vue.set(this.emails, 0 );
       },
     },
       created(){

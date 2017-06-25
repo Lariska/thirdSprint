@@ -1,9 +1,16 @@
 <template>
 <div class = "filter">
     <!-- <input type="text" name="fname">-->
-    <input 
-    v-model="onInput">
-    <button>Search</button>
+    <div>
+        <input 
+        v-model="onInput">
+        <button>Search</button>
+    </div>
+    <div>
+        <input v-model="onStatusChange" type="radio" name="emailStatus" value="all" checked> All<br>
+        <input v-model="onStatusChange" type="radio" name="emailStatus" value="read"> Read<br>
+        <input v-model="onStatusChange" type="radio" name="emailStatus" value="unread"> Unread
+    </div>    
 </div>
 </template>
 
@@ -13,12 +20,16 @@ export default {
   data () {
     return {
         onInput:'',
+        onStatusChange:''
     }
   },
   watch: {
-    onInput: function( newVal, oldVal ){
-        console.log('oldVal:' + oldVal + " newVal:" + newVal );
+    onInput: function( newVal ){
         this.$emit('filterChanged', newVal);
+    },
+    onStatusChange: function( newVal){
+        console.log( " newVal:" + newVal );
+        this.$emit('StatusChanged', newVal);
     }
   },
   methods: {
@@ -37,5 +48,8 @@ export default {
  .filter{
      width: 100%;
      background-color: goldenrod;
+ }
+ .filter div{
+     display: flex;
  }
 </style>
