@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="main-nav flex align-center justify-center">
-    <ul class="clean-list flex flex align-center">
+    <ul class="clean-list flex align-center">
         <router-link to="/" class="active"><span>Appsus</span></router-link>
           <li class="logo flex align-center justify-center">
               <img src="./assets/logo.png" alt="Company name">
@@ -42,6 +42,11 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+footer{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .active{
   font-family: Lato;
   font-size:1.90rem;
@@ -49,8 +54,17 @@ li {
 }
 .main-nav{
   background-color: black;
+  display: flex;
+  justify-content: center;
 }
 .clean-list{
   margin: 0;
+  display: flex;
+  align-content: center;
+}
+.logo{
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 </style>

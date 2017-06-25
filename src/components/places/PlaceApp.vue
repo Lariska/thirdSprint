@@ -31,7 +31,7 @@
         </div>
         <div class="instruction"> 
         <el-collapse>
-        <el-collapse-item title="Instructions" name="1">
+        <el-collapse-item title="Instruction" name="1">
             <h3>
                1) Rightclick on map to marker some place. 
             </h3>
@@ -42,7 +42,7 @@
                3) Click Enter to save text in input.
             </h3>
             <h3>
-              4) Click on marker to delete it.
+              4) Delete marker on map need to click on marker and after click on button botom - delete.
             </h3>
         </el-collapse-item>
     </el-collapse>
