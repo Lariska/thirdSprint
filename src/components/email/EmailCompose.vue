@@ -17,12 +17,12 @@ export default {
         body:null
     }
   },
-  methods: {
-      sendEmail(){
-        //this.$emit('');
-        this.body = null;
-        this.subject = null;
-      }
+  methods :{
+    sendEmail() {
+    this.$emit('emailSent', this.subject, this.body);
+    this.body = null;
+    this.subject = null;
+    }
   }
 }
 </script>

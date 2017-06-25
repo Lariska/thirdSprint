@@ -15,7 +15,9 @@
         :email="selectedEmail"
         @delete="deleteEmail(selectedEmail)" >
         </email-details>
-        <email-compose v-else>
+        <email-compose 
+        v-else
+        @emailSent="sendEmail">
         </email-compose>
       </div>
     </div>
@@ -87,6 +89,9 @@
       },
       composeEmail(){
         this.isComposing = true;
+      },
+      sendEmail(subject, body){
+          this.emails.push({subject, body, isRead:false});
       }
     },
       created(){
