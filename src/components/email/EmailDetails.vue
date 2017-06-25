@@ -1,8 +1,11 @@
 <template>
   <div class = "inner-email">
-    <div v-if="email">
+    <div class="email" v-if="email">
       <p>{{email.body}}</p>
-      <el-button type="danger" @click="deleteEmail()">Delete</el-button>
+        <el-row>
+          <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+          <el-button class="delete" type="danger" @click="deleteEmail()">Delete</el-button>
+        </el-row>
     </div>
   </div>
 </template>
@@ -26,6 +29,13 @@
     display: flex;
     flex-direction: column;
     align-content: space-between;
-  }
 
+    width:100%;
+  }
+  .el-icon-delete{
+    margin: 10px;
+  }
+  /*.email{
+    margin: 100px;
+  }*/
 </style>

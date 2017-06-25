@@ -1,7 +1,7 @@
 <template>
   <div class = "email-app">
     <div class = "main">
-      <button @click="composeEmail">compose</button>
+      <!--<button @click="composeEmail">compose</button>-->
       <div class = "emails">
         <email-list
         class="email-list"
@@ -20,6 +20,7 @@
         @emailSent="sendEmail">
         </email-compose>
       </div>
+      <el-button type="info" @click="composeEmail">compose</el-button>
     </div>
     <email-status
       :emails="emails"
@@ -127,12 +128,12 @@ email-status{
 }
 .email-list{
   background-color: gray;
-  min-height: 270px;
+  min-height: 200px;
   width: 100%;
 }
 .email-inner{
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   width: 100%;
   flex-shrink: 99;
   background-color: white;

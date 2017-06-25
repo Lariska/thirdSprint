@@ -1,15 +1,21 @@
 <template>
 <section class = "compose">
-    <div class = "subject">
-        <h3>Subject:</h3><input v-model="subject">
-    </div>
-    <el-input 
     
-    type="textarea" 
-    v-model="body"
-    :rows="10"
-    ></el-input>
-    <button class = "send-button" @click = "sendEmail" >Send!</button>
+    <el-input
+        type="textarea"
+        autosize
+        placeholder="Subject:"
+        v-model="subject">
+        </el-input>
+        <div style="margin: 20px 0;"></div>
+        <el-input
+        type="textarea"
+        :autosize="{ minRows: 37, maxRows: 70}"
+        placeholder="Text:"
+        v-model="body">
+    </el-input>
+
+    <el-button type="success" @click = "sendEmail">Send</el-button>
 </section>
 </template>
 

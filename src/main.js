@@ -4,10 +4,12 @@ import App from './App'
 import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import locale from 'element-ui/lib/locale/lang/en'
 import * as VueGoogleMaps from 'vue2-google-maps';
 
-Vue.use(Element)
+// Vue.use(Element)
 Vue.use(VueResource);
+Vue.use(Element, { locale })
 
 Vue.use(VueGoogleMaps, {
   load: {

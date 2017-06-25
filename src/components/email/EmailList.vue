@@ -4,13 +4,18 @@
         @filterChanged="renderRelevantTxt"
         @statusChanged="renderRelevantStatus"
         ></email-filter>
-        <ul>
-            <email-preview v-for="email in getEmails" 
-            :email="email"
-            @click.native="selectEmail(email)"
-            :class="[selectedEmail === email ? 'selected' : '']" > 
-            </email-preview>
-        </ul>
+
+        <el-table
+            @row-click="selectEmail"
+            :data="getEmails"
+            style="width: 100%">
+            <el-table-column
+                prop="subject"
+                label="Subject"
+                width="500" >
+            </el-table-column>
+        </el-table>
+
     </div>
 </template>
 
@@ -30,6 +35,7 @@ export default {
     },
     methods: {
         selectEmail(email){
+            console.log(email);
             email.isRead = true;
             this.$emit('selectAnotherMail',email);
         },

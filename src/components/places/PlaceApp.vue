@@ -1,5 +1,6 @@
 <template>
 <section>
+  <section class="map">
       <gmap-map
           :center="getCenter"
           :zoom="7"
@@ -25,6 +26,7 @@
             @click="toggleInfoWindow(m,index)">
         </gmap-marker>
       </gmap-map>
+  </section>
       <div class="delete">
         <!--<button @click="deleteMarker">Delete</button>-->
         <el-button type="danger" @click="deleteMarker">Delete</el-button>
@@ -173,6 +175,12 @@ export default {
     margin: 10px;
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  .map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>
 
