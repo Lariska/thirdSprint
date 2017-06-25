@@ -5,7 +5,7 @@
       <div class = "emails">
         <email-list
         class="email-list"
-        :emails="getEmails()"
+        :emails="emails"
         :selectedEmail="selectedEmail"
         @selectAnotherMail="selectEmail">
         </email-list>
@@ -41,27 +41,27 @@
     components: {EmailList, EmailDetails, EmailStatus, EmailCompose},
     data () {
       return {
-        emails: [ 
-        {subject: "Kill bill", body: "lorem ipsu", isRead: false},
-        {subject: "asdasd", body: "Bad movie2", isRead: false},
-        {subject: "cczx asd", body: "Bad movie3", isRead: false},
-        {subject: "Kill bill", body: "Bad movie4", isRead: false},
-        {subject: "Kill bill", body: "Bad movie5", isRead: false},
-        {subject: "Kill bill", body: "Bad movie6", isRead: false},
-        {subject: "Kill bill", body: "Bad movie7", isRead: false},
-        {subject: "Kill bill", body: "Bad movie8", isRead: false},
-        {subject: "Kill bill", body: "Bad movie9", isRead: false},
-        {subject: "Kill bill", body: "Bad movie10", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
+        emails: [ //if server is down, remove the comment
+        // {subject: "Kill bill", body: "lorem ipsu", isRead: false},
+        // {subject: "asdasd", body: "Bad movie2", isRead: false},
+        // {subject: "cczx asd", body: "Bad movie3", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie4", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie5", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie6", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie7", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie8", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie9", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie10", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
+        // {subject: "Kill bill", body: "Bad movie", isRead: false},
 
         
         ],
@@ -72,9 +72,6 @@
     },
       
     methods :{
-       getEmails(){
-        return this.emails;
-      },
       selectEmail(email){
         this.selectedEmail = email;
         this.isComposing = false;
@@ -83,7 +80,7 @@
         var emailsProp = EmailService.deleteEmail(this.selectedEmail, this.emails);
         this.selectedEmail = emailsProp.selectedEmail;
         this.emails = emailsProp.emails;
-        eventBus.$emit('EmailsChanged');
+        //eventBus.$emit('EmailsChanged');
         console.log(this.emails);
         // Vue.set(this.emails, 0 );
       },
@@ -95,9 +92,13 @@
       }
     },
       created(){
-          console.log("created")
+        var newEmails = EmailService.getEmails();
+        newEmails.then( prmEmails => {
+          this.emails = prmEmails;
           this.selectedEmail= this.emails[0];
-          this.emails[0].isRead = true;
+          this.emails[0].isRead = true;});
+        console.log("created")
+        
       }
   }
 </script>
