@@ -7,26 +7,26 @@ app.use(express.static('public'))
 app.use(cors());
 app.use(bodyParser.json());
 
-var emails= [{subject: "Kill bill", body: "lorem ipsu", isRead: false},
-        {subject: "asdasd", body: "Bad movie2", isRead: false},
-        {subject: "cczx asd", body: "Bad movie3", isRead: false},
-        {subject: "sadasd", body: "Bad movie4", isRead: false},
-        {subject: "asdda    ", body: "Bad movie5", isRead: false},
-        {subject: "sssaaaaad", body: "Bad movie6", isRead: false},
-        {subject: "something meaningfull", body: "Bad movie7", isRead: false},
-        {subject: "lorem ipsum", body: "Bad movie8", isRead: false},
-        {subject: "Kill bill", body: "Bad movie9", isRead: false},
-        {subject: "Kill bill", body: "Bad movie10", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},
-        {subject: "Kill bill", body: "Bad movie", isRead: false},];
+var emails= [{subject: "Kill bill", body: "lorem ipsu", isRead: false, id:1},
+        {subject: "asdasd", body: "Bad movie2", isRead: false, id:2},
+        {subject: "cczx asd", body: "Bad movie3", isRead: false, id:3},
+        {subject: "sadasd", body: "Bad movie4", isRead: false, id:4},
+        {subject: "asdda    ", body: "Bad movie5", isRead: false, id:5},
+        {subject: "sssaaaaad", body: "Bad movie6", isRead: false, id:6},
+        {subject: "something meaningfull", body: "Bad movie7", isRead: false, id:7},
+        {subject: "lorem ipsum", body: "Bad movie8", isRead: false, id:8},
+        {subject: "Kill bill", body: "Bad movie9", isRead: false, id:9},
+        {subject: "Kill bill", body: "Bad movie10", isRead: false, id:10},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:11},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:12},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:13},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:14},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:15},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:16},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:17},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:18},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:19},
+        {subject: "Kill bill", body: "Bad movie", isRead: false, id:20},];
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
 // })
@@ -92,6 +92,37 @@ app.get('/emails', (request, response) => {
 //	console.log(`Server Requested to get Product with id: ${productId}`);
     response.json(emails);
 });
+app.delete('/emails/:email', (req, res) => {
+    const selectedEmail = JSON.parse(req.params.email);
+    console.log(selectedEmail);
+    var savedIdx;
+    var selectedValue = null;
+    var newEmails = [];
+    emails.forEach( ( email , idx ) => {
+     if(email.id == selectedEmail.id){
+       savedIdx = idx;
+     } else newEmails.push(email);
+    });
+        if( ( savedIdx - 1 ) < 0 ){
+            if( (savedIdx + 1) > emails.length){
+                selectedValue = null;
+                console.log("Nullified SelectedEmail")
+            }
+            else    selectedValue = savedIdx;
+        }
+        else{
+            selectedValue = savedIdx - 1;
+            console.log("changed the SelectedEmail")
+        }
+//   else{
+//     selectedValue = savedIdx;
+//     console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + emails.length)
+//   }
+       //console.log("selected Email:="+selectedEmail);
+       //return {emails:newEmails, selectedEmail:selectedValue};
+    emails = newEmails;
+    res.json({emails:newEmails, selectedEmailIdx:selectedValue});
+})
 
 app.listen(3003, () => {
   console.log('REST API listening on port 3003!')
