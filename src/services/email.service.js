@@ -1,5 +1,6 @@
+import $ from 'jquery';
+const urlEmail = 'http://localhost:3003';
 function deleteEmail(selectedEmail, emails){
-
     var savedIdx;
     var selectedValue;
     var newEmails = [];
@@ -29,6 +30,19 @@ function deleteEmail(selectedEmail, emails){
       return {emails:newEmails, selectedEmail:selectedValue};
       
 }
+function getEmails(){
+  //var newPrice = prompt('new price?');
+  var prmEmails = fetch(urlEmail + '/emails');
+  var emails = null;
+  return prmEmails
+    .then(res => res.json())
+    .then(email => {
+      // emails = email;
+      //console.log(email);
+      return email;
+    });
+}
 export default {
     deleteEmail,
+    getEmails
 }

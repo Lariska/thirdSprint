@@ -2,9 +2,13 @@
 <div class = "filter">
     <!-- <input type="text" name="fname">-->
     <div>
-        <input 
-        v-model="onInput">
-        <button>Search</button>
+        <el-input
+            placeholder="search"
+            icon="search"
+            v-model="onInput">
+        </el-input>
+        <!--<input 
+        v-model="onInput">-->
     </div>
     <div>
         <input v-model="onStatusChange" type="radio" name="emailStatus" value="all" checked> All<br>
@@ -39,8 +43,8 @@ export default {
 </script>
 
 <style>
- .emails input {
-     max-width:90%;
+ el-input {
+     width:100%;
  }
  .filter button{
      min-width:57px;
