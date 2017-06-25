@@ -25,35 +25,40 @@ export default {
     data() {
         return {
             emailsToRender: this.emails,
-            gFilterVar: ''
+            gFilterVar: '',
+            gStatusFilter:'all'
         }
     },
     methods: {
         selectEmail(email){
             email.isRead = true;
             // el.classList.add('selected');
-            eventBus.$emit('anotherEmailSelcted', email);
+            // eventBus.$emit('anotherEmailSelcted', email);
             this.$emit('selectAnotherMail',email);
             // debugger;
         },
         renderRelevantTxt(filterVal){
             this.gFilterVar = filterVal;
-            this.emailsToRender = this.emails.filter( email =>{
-                return email.subject.toLowerCase().includes(filterVal.toLowerCase());
-            });
+            //return this.filterEmail();
+            
         },
         renderRelevantStatus(filterVal){
-            // this.emailsToRender = this.emails.filter( email =>{
-            //     return email.subject.toLowerCase().includes(filterVal.toLowerCase());
-            // });
+            this.gStatusFilter = filterVal;
+            console.log('renderRelevatnStatus')
+        },
+        filterEmail(){
+            return this.emailsToRender = this.emails.filter( email =>{
+                return email.subject.toLowerCase().includes(this.gFilterVar.toLowerCase()) 
+                &&( this.gStatusFilter === 'all' 
+                ||  this.gStatusFilter === 'read' && email.isRead
+                ||  this.gStatusFilter === 'unread' && !email.isRead );
+            });
         }
 
     },
     computed :{
         getEmails(){
-           return this.emailsToRender = this.emails.filter( email =>{
-                return email.subject.toLowerCase().includes(this.gFilterVar.toLowerCase());
-            });
+           return this.filterEmail();
         }
     }
 }

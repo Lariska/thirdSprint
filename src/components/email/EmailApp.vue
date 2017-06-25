@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class = "email-app">
     <div class = "main">
+      <button @click="composeEmail">compose</button>
       <div class = "emails">
         <email-list
         class="email-list"
@@ -10,10 +11,12 @@
         </email-list>
       </div>
       <div class = "email-inner">
-        <email-details
+        <email-details v-if="!isComposing"
         :email="selectedEmail"
         @delete="deleteEmail(selectedEmail)" >
         </email-details>
+        <email-compose v-else>
+        </email-compose>
       </div>
     </div>
     <email-status
@@ -28,17 +31,18 @@
   import { eventBus } from '../../services/bus.service.js';
   import EmailDetails from './EmailDetails';
   import EmailStatus from './EmailStatus';
+  import EmailCompose from './EmailCompose';
   import EmailService from '../../services/email.service.js';
 
   export default {
     name: 'Email',
-    components: {EmailList, EmailDetails, EmailStatus},
+    components: {EmailList, EmailDetails, EmailStatus, EmailCompose},
     data () {
       return {
         emails: [ 
         {subject: "Kill bill", body: "lorem ipsu", isRead: false},
-        {subject: "Kill bill", body: "Bad movie2", isRead: false},
-        {subject: "Kill bill", body: "Bad movie3", isRead: false},
+        {subject: "asdasd", body: "Bad movie2", isRead: false},
+        {subject: "cczx asd", body: "Bad movie3", isRead: false},
         {subject: "Kill bill", body: "Bad movie4", isRead: false},
         {subject: "Kill bill", body: "Bad movie5", isRead: false},
         {subject: "Kill bill", body: "Bad movie6", isRead: false},
@@ -60,7 +64,7 @@
         
         ],
         selectedEmail: null,
-        //getEmails:null
+        isComposing: false
       }
       
     },
@@ -71,6 +75,7 @@
       },
       selectEmail(email){
         this.selectedEmail = email;
+        this.isComposing = false;
       },      
       deleteEmail(emailToDel){
         var emailsProp = EmailService.deleteEmail(this.selectedEmail, this.emails);
@@ -80,6 +85,9 @@
         console.log(this.emails);
         // Vue.set(this.emails, 0 );
       },
+      composeEmail(){
+        this.isComposing = true;
+      }
     },
       created(){
           console.log("created")
@@ -97,7 +105,7 @@ html{
 body{
   max-height: 100%;
 }
-div:first-of-type{
+email-app{
   height: 100%;
 }
 email-status{
@@ -117,6 +125,7 @@ email-status{
 }
 .email-list{
   background-color: gray;
+  min-height: 270px;
   width: 100%;
 }
 .email-inner{

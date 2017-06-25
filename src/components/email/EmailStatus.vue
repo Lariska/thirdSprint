@@ -26,6 +26,7 @@ export default {
         }
       });
       percantage = readCount/(this.emails.length / 100); 
+      if(Number.isNaN(percantage)) percantage = 0;
       return Math.round(percantage);
     }
   }

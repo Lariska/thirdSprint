@@ -29,7 +29,7 @@ export default {
     },
     onStatusChange: function( newVal){
         console.log( " newVal:" + newVal );
-        this.$emit('StatusChanged', newVal);
+        this.$emit('statusChanged', newVal);
     }
   },
   methods: {
@@ -42,8 +42,8 @@ export default {
  .emails input {
      max-width:90%;
  }
- .emails button{
-     min-width:10%;
+ .filter button{
+     min-width:57px;
  }
  .filter{
      width: 100%;
