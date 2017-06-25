@@ -1,6 +1,6 @@
 <template>
 <section class = "compose">
-    
+
     <el-input
         type="textarea"
         autosize
@@ -14,8 +14,10 @@
         placeholder="Text:"
         v-model="body">
     </el-input>
-
-    <el-button type="success" @click = "sendEmail">Send</el-button>
+    <el-row>
+        <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+        <el-button type="success" @click = "sendEmail">Send</el-button>
+    </el-row>
 </section>
 </template>
 

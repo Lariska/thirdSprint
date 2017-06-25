@@ -7,7 +7,6 @@
 
         <el-table
             @row-click="selectEmail"
-            :class="[selectedEmail === email ? 'selected' : '']"
             :data="getEmails"
             style="width: 100%">
             <el-table-column
@@ -16,14 +15,6 @@
                 width="500" >
             </el-table-column>
         </el-table>
-
-
-            <!--<email-preview v-for="email in getEmails" 
-            :email="email"
-            @click.native="selectEmail(email)"
-            :class="[selectedEmail === email ? 'selected' : '']" > 
-            </email-preview>-->
-        <!--</ul>-->
     </div>
 </template>
 
@@ -62,7 +53,6 @@ export default {
                 ||  this.gStatusFilter === 'unread' && !email.isRead );
             });
         }
-
     },
     computed :{
         getEmails(){

@@ -19,8 +19,11 @@
         v-else
         @emailSent="sendEmail">
         </email-compose>
+        <div class="com">
+          <el-button class="compose" type="info" @click="composeEmail">compose</el-button>
+        </div>
       </div>
-      <el-button type="info" @click="composeEmail">compose</el-button>
+      <!--<el-button class="compose" type="info" @click="composeEmail">compose</el-button>-->
     </div>
     <email-status
       :emails="emails"
@@ -41,30 +44,7 @@
     components: {EmailList, EmailDetails, EmailStatus, EmailCompose},
     data () {
       return {
-        emails: [ //if server is down, remove the comment
-        // {subject: "Kill bill", body: "lorem ipsu", isRead: false},
-        // {subject: "asdasd", body: "Bad movie2", isRead: false},
-        // {subject: "cczx asd", body: "Bad movie3", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie4", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie5", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie6", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie7", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie8", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie9", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie10", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-        // {subject: "Kill bill", body: "Bad movie", isRead: false},
-
-        
-        ],
+        emails: [],
         selectedEmail: null,
         isComposing: false
       }
@@ -142,9 +122,20 @@ email-status{
 }
 .email-inner{
   display: flex;
-  /*flex-wrap: wrap;*/
+  flex-wrap: wrap;
   width: 100%;
   flex-shrink: 99;
   background-color: white;
+}
+.compose{
+    /*height:100%;*/
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /*justify-content: flex-end;
+    margin-top: auto;*/
+}
+.com{
+  margin-top: auto;
 }
 </style>

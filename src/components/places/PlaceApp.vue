@@ -28,7 +28,6 @@
       </gmap-map>
   </section>
       <div class="delete">
-        <!--<button @click="deleteMarker">Delete</button>-->
         <el-button type="danger" @click="deleteMarker">Delete</el-button>
         </div>
         <div class="instruction"> 
