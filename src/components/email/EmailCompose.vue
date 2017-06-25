@@ -19,6 +19,7 @@ export default {
   },
   methods: {
       sendEmail(){
+        //this.$emit('');
         this.body = null;
         this.subject = null;
       }
