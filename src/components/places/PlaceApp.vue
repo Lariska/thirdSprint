@@ -175,3 +175,5 @@ export default {
     margin-right: 10px;
   }
 </style>
+
+//server write in file dev-server.js (build/dev-server.js)

@@ -1,5 +1,8 @@
 <template>
     <section v-if="books">
+
+        <div class="cart"><Cart></Cart></div>
+
         <BookFilter @set-filter="setFilter"></BookFilter>
         <h2>We have {{books.length}} Books</h2>
         <button @click="isCreateMode=true">+</button>
@@ -25,12 +28,13 @@ import BookEdit from './BookEdit';
 import BookDetails from './BookDetails';
 import BookPreview from './BookPreview';
 import BookFilter from './BookFilter';
+import Cart from './Cart'
 
 export default {
     name: 'book-list',
 
     components: {
-        BookEdit, BookDetails, BookPreview, BookFilter
+        BookEdit, BookDetails, BookPreview, BookFilter, Cart
     },
 
     data() {
@@ -84,7 +88,7 @@ export default {
         addToCart(book) {
             cartService.addToCart(book);
             //Go from one page to another
-            this.$router.push({name: 'cart'});
+            // this.$router.push({name: 'cart'});
         }
     },
 }
@@ -128,5 +132,6 @@ export default {
     background-color: lightseagreen;
     padding: 10px;
     border-radius: 1em;
+    margin-bottom: 10px;
 }
 </style>
