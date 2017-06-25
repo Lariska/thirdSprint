@@ -24,7 +24,6 @@ function deleteEmail(selectedEmail, emails){
       else{
         selectedValue = emails[savedIdx + 1];
         console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + emails.length)
-
       }
       console.log("selected Email:="+selectedEmail);
       return {emails:newEmails, selectedEmail:selectedValue};

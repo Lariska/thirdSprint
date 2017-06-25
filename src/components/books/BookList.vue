@@ -114,8 +114,8 @@ export default {
     border-radius: 1em;
     text-align: center;
     position: absolute;
-    left: 0;
-    top: 50%;
+    left: 15%;
+    top: 137%;
 }
 
 .book-edit {
