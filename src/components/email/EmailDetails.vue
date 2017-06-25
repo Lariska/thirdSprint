@@ -2,7 +2,7 @@
   <div class = "inner-email">
     <div v-if="email">
       <p>{{email.body}}</p>
-      <button @click="deleteEmail()">Delete</button>
+      <el-button type="danger" @click="deleteEmail()">Delete</el-button>
     </div>
   </div>
 </template>
@@ -21,12 +21,11 @@
 </script>
 
 <style>
-  .inner-email{
+  .inner-email div{
+    height:100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-content: space-between;
   }
-  .inner-email button{
-    margin-top:auto;
-  }
+
 </style>
