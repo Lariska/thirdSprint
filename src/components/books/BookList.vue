@@ -14,7 +14,7 @@
         <BookDetails v-if="selectedBook" @close="resetSelected" @next="selectNext" :book="selectedBook">
         </BookDetails>
     
-        <BookEdit v-if="editedBook || isCreateMode" :book="editedBook" @save="saveBook"></BookEdit> 
+        <BookEdit v-if="editedBook || isCreateMode" :book="editedBook" @save="saveBook" @delete="editedBook = null; isCreateMode = false"></BookEdit> 
     </section>
 </template>
 

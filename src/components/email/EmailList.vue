@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { eventBus } from '../../services/bus.service.js';
 import EmailPreview from './EmailPreview'
 import EmailFilter from './EmailFilter';
 export default {
@@ -32,15 +31,10 @@ export default {
     methods: {
         selectEmail(email){
             email.isRead = true;
-            // el.classList.add('selected');
-            // eventBus.$emit('anotherEmailSelcted', email);
             this.$emit('selectAnotherMail',email);
-            // debugger;
         },
         renderRelevantTxt(filterVal){
             this.gFilterVar = filterVal;
-            //return this.filterEmail();
-            
         },
         renderRelevantStatus(filterVal){
             this.gStatusFilter = filterVal;
@@ -64,7 +58,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .selected{
         color:blue;
@@ -73,7 +66,6 @@ export default {
         display: flex;
         flex-direction: column;
         padding-right: 40px;
-        /*justify-content: space-between;*/
         justify-content: center;
     }
     li{

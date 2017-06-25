@@ -8,26 +8,15 @@
 </template>
 
 <script>
-  import { eventBus } from '../../services/bus.service.js';
   export default {
     name: 'email-details',
     props: ['email'],
     methods: {
-      // getEmail(){
-      //   return ()? : ;
-      // },
       deleteEmail(){
         console.log("delete button pushed");
         this.$emit('delete');
       }
     },
-    data () {
-      return {
-      }
-    },
-    created(){
-    },
-   
   }
 </script>
 
@@ -36,7 +25,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*align-content: space-between;*/
   }
   .inner-email button{
     margin-top:auto;

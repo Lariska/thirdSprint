@@ -31,7 +31,7 @@ export default {
             this.$emit('save', this.bookToEdit);
         },
         cancel() {
-            console.log('Cancel')
+            this.$emit('delete');
         }
     }
 }

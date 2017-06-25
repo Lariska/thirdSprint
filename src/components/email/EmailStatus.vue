@@ -10,12 +10,6 @@ export default {
   name: 'email-status',
   props: ['emails'],
   components: {ProgressBar},
-  data () {
-    return {
-      // emailsNum:null;
-      // readNum:null;
-    }
-  },
   computed: {
     generatePercantage(){
       var readCount = 0;

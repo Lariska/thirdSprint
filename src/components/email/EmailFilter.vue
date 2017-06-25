@@ -1,19 +1,16 @@
 <template>
 <div class = "filter">
-    <!-- <input type="text" name="fname">-->
     <div>
         <el-input
             placeholder="search"
             icon="search"
             v-model="onInput">
         </el-input>
-        <!--<input 
-        v-model="onInput">-->
     </div>
     <div>
-        <input v-model="onStatusChange" type="radio" name="emailStatus" value="all" checked> All<br>
-        <input v-model="onStatusChange" type="radio" name="emailStatus" value="read"> Read<br>
-        <input v-model="onStatusChange" type="radio" name="emailStatus" value="unread"> Unread
+        <el-radio v-model="onStatusChange" name="emailStatus" label="all" checked> All</el-radio>
+        <el-radio v-model="onStatusChange" name="emailStatus" label="read"> Read</el-radio>
+        <el-radio v-model="onStatusChange" name="emailStatus" label="unread"> Unread</el-radio>
     </div>    
 </div>
 </template>

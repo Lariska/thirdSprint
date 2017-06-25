@@ -30,7 +30,6 @@
 <script>
   import Vue from 'vue';
   import EmailList from './EmailList';
-  import { eventBus } from '../../services/bus.service.js';
   import EmailDetails from './EmailDetails';
   import EmailStatus from './EmailStatus';
   import EmailCompose from './EmailCompose';
@@ -80,9 +79,7 @@
         var emailsProp = EmailService.deleteEmail(this.selectedEmail, this.emails);
         this.selectedEmail = emailsProp.selectedEmail;
         this.emails = emailsProp.emails;
-        //eventBus.$emit('EmailsChanged');
         console.log(this.emails);
-        // Vue.set(this.emails, 0 );
       },
       composeEmail(){
         this.isComposing = true;
@@ -103,7 +100,6 @@
   }
 </script>
 
-// <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 html{
   height: 100%;
@@ -139,7 +135,6 @@ email-status{
   flex-wrap: wrap;
   width: 100%;
   flex-shrink: 99;
-  /*max-height: 100%;*/
   background-color: white;
 }
 </style>
