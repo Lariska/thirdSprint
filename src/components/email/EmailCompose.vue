@@ -3,7 +3,12 @@
     <div class = "subject">
         <h3>Subject:</h3><input v-model="subject">
     </div>
-    <textarea v-model="body"></textarea>
+    <el-input 
+    
+    type="textarea" 
+    v-model="body"
+    :rows="10"
+    ></el-input>
     <button class = "send-button" @click = "sendEmail" >Send!</button>
 </section>
 </template>
@@ -37,7 +42,7 @@ export default {
     display:flex;
     height:20%;
 }
-.compose input{
+.compose el-input{
     max-height:1em;
     width:100%;
     margin-top:18.72px;
