@@ -7,6 +7,10 @@
 
         <el-table
             @row-click="selectEmail"
+<<<<<<< HEAD
+=======
+
+>>>>>>> a87f52274074db9947b1c2efb5110e14af59de45
             :data="getEmails"
             style="width: 100%">
             <el-table-column
@@ -33,6 +37,16 @@ export default {
         }
     },
     methods: {
+        getEmailIdx(row ,emailInQuestion){
+            var idx = null;
+            this.emails.forEach( (email,index) =>{
+                if(email === emailInQuestion){
+                    idx = index;
+                }
+            });
+            return idx;
+        },
+
         selectEmail(email){
             console.log(email);
             email.isRead = true;

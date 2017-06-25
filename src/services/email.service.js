@@ -25,7 +25,17 @@ function getEmails(){
       return email;
     });
 }
+function sendNewMail(newMails){
+  console.log('posting');
+  return $.ajax({
+    url:  `${urlEmail}/emails/${JSON.stringify(newMails)}`,
+    type: 'POST',
+  }).then((answer)=>{
+    return answer;
+  })   
+}
 export default {
     deleteEmail,
-    getEmails
+    getEmails,
+    sendNewMail
 }

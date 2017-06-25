@@ -87,9 +87,6 @@ app.put('/item', (req, res) => {
 })
 //////////////////////////////////////email!!
 app.get('/emails', (request, response) => { 
-//	const productId = +request.params.prdId;
-//    const idx = products.findIndex(product => product.id === productId);
-//	console.log(`Server Requested to get Product with id: ${productId}`);
     response.json(emails);
 });
 app.delete('/emails/:email', (req, res) => {
@@ -114,14 +111,13 @@ app.delete('/emails/:email', (req, res) => {
             selectedValue = savedIdx - 1;
             console.log("changed the SelectedEmail")
         }
-//   else{
-//     selectedValue = savedIdx;
-//     console.log("changed to next email with savedIDx of:" + savedIdx + " and length:" + emails.length)
-//   }
-       //console.log("selected Email:="+selectedEmail);
-       //return {emails:newEmails, selectedEmail:selectedValue};
     emails = newEmails;
     res.json({emails:newEmails, selectedEmailIdx:selectedValue});
+})
+app.post('/emails/:email', (req, res) => {
+    const newEmails = JSON.parse(req.params.email);
+    emails = newEmails;
+    res.json("");
 })
 
 app.listen(3003, () => {

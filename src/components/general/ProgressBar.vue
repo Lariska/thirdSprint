@@ -1,5 +1,9 @@
 <template>
-<div class = "full-bar"><div :style="{ width:percentage+'%' }">{{percentage}}%</div></div>
+<!--<div class = "full-bar"><div :style="{ width:percentage+'%' }">{{percentage}}%</div></div>-->
+<div>
+  <el-progress v-if="percentage !== 100" :percentage="percentage" status="danger"></el-progress>
+  <el-progress v-else :percentage="percentage" status="success"></el-progress>
+</div>
 </template>
 
 <script>
